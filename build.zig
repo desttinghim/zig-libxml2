@@ -12,7 +12,8 @@ pub fn build(b: *std.build.Builder) !void {
         .lzma = false,
         .zlib = false,
     });
-    xml2.step.install();
+
+    b.installArtifact(xml2.step);
 
     // Tests that we can depend on other libraries like zlib
     const xml2_with_libs = try libxml2.create(b, target, optimize, .{
